@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+	box-sizing: border-box;
+	border: unset;
+	background-color: unset;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: unset;
+	margin: unset;
+}
+
+body, html {
+	min-width: 100vw;
+	min-height: 100vh;
+}
+
+input, select {
+	border: 1px solid gray;
+}
