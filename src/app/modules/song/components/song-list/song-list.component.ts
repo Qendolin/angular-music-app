@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 	styleUrls: ['./song-list.component.css']
 })
 export class SongListComponent implements OnInit {
-	@Input() songs$?: Observable<Song[]>;
+	@Input() songs?: Song[];
 
 	constructor() {}
 
