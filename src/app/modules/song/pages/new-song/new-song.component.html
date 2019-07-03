@@ -1,12 +1,37 @@
-<form #songForm="ngForm" id="newSongForm">
+<form #songForm="ngForm" id="newSongForm" (submit)="addSong($event)">
 	<label for="name">Name: </label>
-	<input name="name" type="text" required maxlength="100" [(ngModel)]="song.name" placeholder="song name">
+	<input
+		name="name"
+		type="text"
+		required
+		maxlength="100"
+		[(ngModel)]="song.name"
+		placeholder="song name"
+	/>
 	<label for="url">Url: </label>
-	<input name="url" type="text" required maxlength="100" [(ngModel)]="song.url" placeholder="https://...">
+	<input
+		name="url"
+		type="text"
+		required
+		maxlength="100"
+		[(ngModel)]="song.url"
+		placeholder="https://..."
+	/>
 	<label for="length">Length: </label>
-	<input name="length" type="number" step="1" min="1" max="300" required [(ngModel)]="song.length">
+	<input
+		name="length"
+		type="number"
+		step="1"
+		min="1"
+		max="300"
+		required
+		[(ngModel)]="song.length"
+	/>
 	<label for="author">Author: </label>
-	<select name="author">
-		<option *ngFor="let author of authors$ | async" [attr.value]="author.name">{{author.name}}</option>
+	<select name="author" [(ngModel)]="song.author.name">
+		<option *ngFor="let author of authors$ | async" [value]="author.name">{{
+			author.name
+		}}</option>
 	</select>
+	<button type="submit">Song hinzufügen</button>
 </form>

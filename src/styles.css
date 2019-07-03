@@ -6,13 +6,28 @@
 	font-family: Arial, Helvetica, sans-serif;
 	padding: unset;
 	margin: unset;
+	color: unset;
+	text-decoration: unset;
 }
 
-body, html {
+:root {
+	--col-primary: rgb(136, 30, 218);
+	--col-accent: rgb(173, 244, 176);
+}
+
+body,
+html {
 	min-width: 100vw;
 	min-height: 100vh;
 }
 
-input, select {
+input,
+select {
 	border: 1px solid gray;
+}
+
+button {
+	padding: 5px;
+	background-color: var(--col-primary);
+	color: white;
 }

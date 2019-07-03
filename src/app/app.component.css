@@ -1,0 +1,45 @@
+:host() {
+	display: grid;
+	grid-template-areas:
+		'header header'
+		'aside main';
+	grid-template-columns: max-content 1fr;
+	grid-template-rows: max-content 1fr;
+}
+
+#header {
+	grid-area: header;
+	padding: 10px;
+}
+
+#title {
+	color: var(--col-primary);
+}
+
+#aside {
+	grid-area: aside;
+	width: 150px;
+}
+
+#sideNav > ul > li {
+	list-style-type: none;
+}
+
+#sideNav > ul > li > a {
+	background-color: var(--col-accent);
+	padding: 5px;
+	padding-left: 15px;
+	will-change: transform;
+	transition: transform;
+	transition-duration: 0.2s;
+	display: block;
+}
+
+#sideNav > ul > li > a:hover {
+	transform: translateX(20px);
+}
+
+#main {
+	grid-area: main;
+	margin: 50px;
+}

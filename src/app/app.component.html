@@ -1,6 +1,13 @@
-
-<h1>
-{{title}}
-</h1>
-<a routerLink="songs/new">New</a>
-<router-outlet></router-outlet>
+<header id="header">
+	<h1 id="title">{{ title }}</h1>
+</header>
+<aside id="aside">
+	<nav id="sideNav">
+		<ul>
+			<li><a routerLink="songs/new">New</a></li>
+		</ul>
+	</nav>
+</aside>
+<main id="main">
+	<router-outlet></router-outlet>
+</main>
