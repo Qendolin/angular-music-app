@@ -7,10 +7,6 @@ import { Observable } from 'rxjs';
 	templateUrl: './song-list.component.html',
 	styleUrls: ['./song-list.component.css']
 })
-export class SongListComponent implements OnInit {
+export class SongListComponent {
 	@Input() songs?: Song[];
-
-	constructor() {}
-
-	ngOnInit() {}
 }

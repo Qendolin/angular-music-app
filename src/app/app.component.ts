@@ -7,6 +7,10 @@ import { TranslateService } from '@ngx-translate/core';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	constructor() {}
+	constructor(translate: TranslateService) {
+		translate.addLangs(['de']);
+		translate.setDefaultLang('de');
+		translate.use('de');
+	}
 	title = 'Musik App';
 }

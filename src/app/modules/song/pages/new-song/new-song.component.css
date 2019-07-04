@@ -1,4 +1,5 @@
 #newSongForm {
 	display: grid;
 	grid-template-columns: 2;
+	grid-row-gap: 5px;
 }

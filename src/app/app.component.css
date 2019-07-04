@@ -28,7 +28,7 @@
 #sideNav > ul > li > a {
 	background-color: var(--col-accent);
 	padding: 5px;
-	padding-left: 15px;
+	padding-left: calc(5px + 1rem);
 	will-change: transform;
 	transition: transform;
 	transition-duration: 0.2s;

@@ -8,11 +8,9 @@ import { SongsService } from 'src/app/core/services';
 	templateUrl: './song-browser.component.html',
 	styleUrls: ['./song-browser.component.css']
 })
-export class SongBrowserComponent implements OnInit {
+export class SongBrowserComponent {
 	songs$: Observable<Song[]>;
 	constructor(songServ: SongsService) {
 		this.songs$ = songServ.getSongs();
 	}
-
-	ngOnInit() {}
 }

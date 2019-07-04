@@ -25,6 +25,7 @@ html {
 input,
 select {
 	border: 1px solid gray;
+	width: 142.6px;
 }
 
 button {

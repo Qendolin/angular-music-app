@@ -25,11 +25,8 @@ export class SongsService {
 	}
 
 	addSong(song: Song): Observable<Song> {
-		const data: any = { ...song };
-		data.authorName = data.author.name;
-		delete data.author;
 		return this.http
-			.post<Song>(API_URL, data, httpOptions)
+			.post<Song>(API_URL, song, httpOptions)
 			.pipe(catchError(handleError('addSong', null)));
 	}
 }
