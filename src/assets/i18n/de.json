@@ -6,7 +6,8 @@
 			"NAME_PLACEHOLDER": "Name des Lieds",
 			"LENGTH": "Länge:",
 			"AUTHOR": "Author:",
-			"SUBMIT": "Song hinzufügen"
+			"SUBMIT": "Song hinzufügen",
+			"GENRES": "Genres:"
 		}
 	},
 	"SHELL": {

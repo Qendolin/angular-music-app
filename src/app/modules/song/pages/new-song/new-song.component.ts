@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Song, Author } from 'src/app/shared';
+import { Song, Author, Genre } from 'src/app/shared';
 import { Observable } from 'rxjs';
 import { AuthorService, SongsService } from 'src/app/core/services';
 import { take } from 'rxjs/operators';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { GenreService } from 'src/app/core/services/genre.service';
 
 @Component({
 	selector: 'app-new-song',
@@ -12,12 +13,14 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class NewSongComponent {
 	authors$: Observable<Author[]>;
+	autocompGenres: string[];
 	songForm: FormGroup;
 
 	constructor(
 		authorServ: AuthorService,
 		private songServ: SongsService,
-		private fromBuilder: FormBuilder
+		private fromBuilder: FormBuilder,
+		private genreServ: GenreService
 	) {
 		this.authors$ = authorServ.getAuthors();
 
@@ -34,7 +37,14 @@ export class NewSongComponent {
 				]
 			],
 			length: [undefined, [Validators.required, Validators.min(1), Validators.max(300)]],
-			author: [undefined, [Validators.required]]
+			author: [undefined, [Validators.required]],
+			genres: [undefined]
+		});
+	}
+
+	searchGenres(input: string) {
+		this.genreServ.searchGenres(input).subscribe(genres => {
+			this.autocompGenres = genres.map(g => g.name);
 		});
 	}
 

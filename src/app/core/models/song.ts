@@ -1,6 +1,4 @@
-import { Author } from './author';
-
-export class Song {
+export interface Song {
 	name: string;
 	url: string;
 	length: number;

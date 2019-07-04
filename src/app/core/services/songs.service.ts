@@ -5,28 +5,25 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { catchError, map, tap } from 'rxjs/operators';
 import { handleError } from './http-error';
-
-const API_URL = environment.api.baseUrl + '/songs';
-
-const httpOptions = {
-	headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+import { ServiceBase } from './service-base';
 
 @Injectable({
 	providedIn: 'root'
 })
-export class SongsService {
-	constructor(private http: HttpClient) {}
+export class SongsService extends ServiceBase {
+	constructor(private http: HttpClient) {
+		super('/songs');
+	}
 
 	getSongs(): Observable<Song[]> {
 		return this.http
-			.get<Song[]>(API_URL, httpOptions)
+			.get<Song[]>(this.apiUrl, this.httpOptions)
 			.pipe(catchError(handleError('getSongs', [])));
 	}
 
 	addSong(song: Song): Observable<Song> {
 		return this.http
-			.post<Song>(API_URL, song, httpOptions)
+			.post<Song>(this.apiUrl, song, this.httpOptions)
 			.pipe(catchError(handleError('addSong', null)));
 	}
 }

@@ -1,6 +1,6 @@
 <form id="newSongForm" (ngSubmit)="addSong($event)" [formGroup]="songForm">
-	<label for="name"
-		>{{ 'NEW_SONG.FORM.NAME' | translate }}
+	<label for="name">
+		{{ 'NEW_SONG.FORM.NAME' | translate }}
 		<br />
 		<input
 			type="text"
@@ -14,13 +14,13 @@
 		<br />
 		<input id="url" type="text" formControlName="url" placeholder="https://..." />
 	</label>
-	<label for="length"
-		>{{ 'NEW_SONG.FORM.LENGTH' | translate }}
+	<label for="length">
+		{{ 'NEW_SONG.FORM.LENGTH' | translate }}
 		<br />
 		<input id="length" formControlName="length" type="number" step="1" />
 	</label>
-	<label for="author"
-		>{{ 'NEW_SONG.FORM.AUTHOR' | translate }}
+	<label for="author">
+		{{ 'NEW_SONG.FORM.AUTHOR' | translate }}
 		<br />
 		<input id="author" name="author" type="text" list="authors" formControlName="author" />
 		<datalist id="authors">
@@ -28,6 +28,12 @@
 				author.name
 			}}</option>
 		</datalist>
+	</label>
+	<label>
+		{{ 'NEW_SONG.FORM.GENRES' | translate }}
+		<tag-input (onTextChange)="searchGenres($event)">
+			<tag-input-dropdown [autocompleteItems]="autocompGenres"> </tag-input-dropdown>
+		</tag-input>
 	</label>
 	<button [disabled]="songForm.invalid" type="submit">
 		{{ 'NEW_SONG.FORM.SUBMIT' | translate }}

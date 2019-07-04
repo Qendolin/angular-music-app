@@ -1,32 +1,28 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Author, Song } from 'src/app/shared';
 import { catchError } from 'rxjs/operators';
 import { handleError } from './http-error';
-
-const API_URL = environment.api.baseUrl + '/authors';
-
-const httpOptions = {
-	headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+import { ServiceBase } from './service-base';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
 	providedIn: 'root'
 })
-export class AuthorService {
-	constructor(private http: HttpClient) {}
+export class AuthorService extends ServiceBase {
+	constructor(private http: HttpClient) {
+		super('/authors');
+	}
 
 	getAuthors(): Observable<Author[]> {
 		return this.http
-			.get<Song[]>(API_URL, httpOptions)
+			.get<Song[]>(this.apiUrl, this.httpOptions)
 			.pipe(catchError(handleError('getAuthors', [])));
 	}
 
 	addAuthor(author: Author): Observable<Author> {
 		return this.http
-			.post<Song>(API_URL, author, httpOptions)
+			.post<Song>(this.apiUrl, author, this.httpOptions)
 			.pipe(catchError(handleError('addAuthor', null)));
 	}
 }
