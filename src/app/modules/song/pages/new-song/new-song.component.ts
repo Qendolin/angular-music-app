@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Song, Author, Genre } from 'src/app/shared';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { AuthorService, SongsService } from 'src/app/core/services';
 import { take } from 'rxjs/operators';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { GenreService } from 'src/app/core/services/genre.service';
+import { TagModel } from 'ngx-chips/core/accessor';
 
 @Component({
 	selector: 'app-new-song',
@@ -13,7 +14,7 @@ import { GenreService } from 'src/app/core/services/genre.service';
 })
 export class NewSongComponent {
 	authors$: Observable<Author[]>;
-	autocompGenres: string[];
+	autocompGenres: TagModel[];
 	songForm: FormGroup;
 
 	constructor(
@@ -40,11 +41,25 @@ export class NewSongComponent {
 			author: [undefined, [Validators.required]],
 			genres: [undefined]
 		});
+
+		this.genreServ.getGenres().subscribe(genres => {
+			this.autocompGenres = genres.map<TagModel>(g => ({
+				display: g.name,
+				value: g.name.toLowerCase()
+			}));
+		});
+	}
+
+	onGenreAdd(tag: TagModel): Observable<TagModel> {
+		return of(tag.toLowerCase());
 	}
 
 	searchGenres(input: string) {
 		this.genreServ.searchGenres(input).subscribe(genres => {
-			this.autocompGenres = genres.map(g => g.name);
+			this.autocompGenres = genres.map<TagModel>(g => ({
+				display: g.name,
+				value: g.name.toLowerCase()
+			}));
 		});
 	}
 

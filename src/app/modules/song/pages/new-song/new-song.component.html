@@ -31,8 +31,18 @@
 	</label>
 	<label>
 		{{ 'NEW_SONG.FORM.GENRES' | translate }}
-		<tag-input (onTextChange)="searchGenres($event)">
-			<tag-input-dropdown [autocompleteItems]="autocompGenres"> </tag-input-dropdown>
+		<tag-input
+			(onTextChange)="searchGenres($event)"
+			[trimTags]="true"
+			[placeholder]="'NEW_SONG.FORM.GENRES_PLACEHOLDER' | translate"
+			[onAdding]="onGenreAdd"
+		>
+			<tag-input-dropdown
+				[autocompleteItems]="autocompGenres"
+				[minimumTextLength]="0"
+				[focusFirstElement]="true"
+			>
+			</tag-input-dropdown>
 		</tag-input>
 	</label>
 	<button [disabled]="songForm.invalid" type="submit">

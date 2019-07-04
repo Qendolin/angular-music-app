@@ -7,7 +7,8 @@
 			"LENGTH": "Länge:",
 			"AUTHOR": "Author:",
 			"SUBMIT": "Song hinzufügen",
-			"GENRES": "Genres:"
+			"GENRES": "Genres:",
+			"GENRES_PLACEHOLDER": "Genre auswählen"
 		}
 	},
 	"SHELL": {
