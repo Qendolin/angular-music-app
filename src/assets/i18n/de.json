@@ -8,5 +8,11 @@
 			"AUTHOR": "Author:",
 			"SUBMIT": "Song hinzufügen"
 		}
+	},
+	"SHELL": {
+		"NAV": {
+			"SONGS": "Lieder",
+			"NEW_SONG": "Neues Lied"
+		}
 	}
 }
