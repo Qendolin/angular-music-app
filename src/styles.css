@@ -12,6 +12,7 @@
 
 :root {
 	--col-primary: rgb(136, 30, 218);
+	--col-primary-disabled: rgb(64, 47, 78);
 	--col-accent: rgb(173, 244, 176);
 }
 
@@ -30,4 +31,12 @@ button {
 	padding: 5px;
 	background-color: var(--col-primary);
 	color: white;
+}
+
+button:not([disabled]) {
+	cursor: pointer;
+}
+
+button[disabled] {
+	background-color: var(--col-primary-disabled);
 }

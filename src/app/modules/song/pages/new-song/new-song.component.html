@@ -1,37 +1,23 @@
-<form #songForm="ngForm" id="newSongForm" (submit)="addSong($event)">
+<form id="newSongForm" (ngSubmit)="addSong($event)" [formGroup]="songForm">
 	<label for="name">{{ 'NEW_SONG.FORM.NAME' | translate }} </label>
 	<input
-		name="name"
 		type="text"
-		required
-		maxlength="100"
-		[(ngModel)]="song.name"
+		id="name"
+		formControlName="name"
 		[placeholder]="'NEW_SONG.FORM.NAME_PLACEHOLDER' | translate"
 	/>
 	<label for="url">{{ 'NEW_SONG.FORM.URL' | translate }}</label>
-	<input
-		name="url"
-		type="text"
-		required
-		maxlength="100"
-		[(ngModel)]="song.url"
-		placeholder="https://..."
-	/>
+	<input id="url" type="text" formControlName="url" placeholder="https://..." />
 	<label for="length">{{ 'NEW_SONG.FORM.LENGTH' | translate }}</label>
-	<input
-		name="length"
-		type="number"
-		step="1"
-		min="1"
-		max="300"
-		required
-		[(ngModel)]="song.length"
-	/>
+	<input id="length" formControlName="length" type="number" step="1" />
 	<label for="author">{{ 'NEW_SONG.FORM.AUTHOR' | translate }}</label>
-	<select name="author" [(ngModel)]="song.author.name">
+	<input id="author" name="author" type="text" list="authors" formControlName="author" />
+	<datalist id="authors">
 		<option *ngFor="let author of authors$ | async" [value]="author.name">{{
 			author.name
 		}}</option>
-	</select>
-	<button type="submit">{{ 'NEW_SONG.FORM.SUBMIT' | translate }}</button>
+	</datalist>
+	<button [disabled]="songForm.invalid" type="submit">
+		{{ 'NEW_SONG.FORM.SUBMIT' | translate }}
+	</button>
 </form>

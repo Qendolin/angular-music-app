@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NewSongComponent } from './pages/new-song/new-song.component';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -15,7 +15,8 @@ import { SongListComponent } from './components/song-list/song-list.component';
 		]),
 		CommonModule,
 		FormsModule,
-		SharedModule
+		SharedModule,
+		ReactiveFormsModule
 	],
 	declarations: [SongBrowserComponent, SongListComponent, NewSongComponent]
 })
