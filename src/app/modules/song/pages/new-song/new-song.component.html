@@ -1,14 +1,14 @@
 <form #songForm="ngForm" id="newSongForm" (submit)="addSong($event)">
-	<label for="name">Name: </label>
+	<label for="name">{{ 'NEW_SONG.FORM.NAME' | translate }} </label>
 	<input
 		name="name"
 		type="text"
 		required
 		maxlength="100"
 		[(ngModel)]="song.name"
-		placeholder="song name"
+		[placeholder]="'NEW_SONG.FORM.NAME_PLACEHOLDER' | translate"
 	/>
-	<label for="url">Url: </label>
+	<label for="url">{{ 'NEW_SONG.FORM.URL' | translate }}</label>
 	<input
 		name="url"
 		type="text"
@@ -17,7 +17,7 @@
 		[(ngModel)]="song.url"
 		placeholder="https://..."
 	/>
-	<label for="length">Length: </label>
+	<label for="length">{{ 'NEW_SONG.FORM.LENGTH' | translate }}</label>
 	<input
 		name="length"
 		type="number"
@@ -27,11 +27,11 @@
 		required
 		[(ngModel)]="song.length"
 	/>
-	<label for="author">Author: </label>
+	<label for="author">{{ 'NEW_SONG.FORM.AUTHOR' | translate }}</label>
 	<select name="author" [(ngModel)]="song.author.name">
 		<option *ngFor="let author of authors$ | async" [value]="author.name">{{
 			author.name
 		}}</option>
 	</select>
-	<button type="submit">Song hinzufügen</button>
+	<button type="submit">{{ 'NEW_SONG.FORM.SUBMIT' | translate }}</button>
 </form>

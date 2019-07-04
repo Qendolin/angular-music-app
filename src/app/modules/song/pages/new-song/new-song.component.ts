@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AuthorService } from 'src/app/core/services/author.service';
 import { SongsService } from 'src/app/core/services';
 import { take } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
 	selector: 'app-new-song',
@@ -13,8 +14,15 @@ import { take } from 'rxjs/operators';
 export class NewSongComponent implements OnInit {
 	song = new Song();
 	authors$: Observable<Author[]>;
-	constructor(authorServ: AuthorService, private songServ: SongsService) {
+	constructor(
+		authorServ: AuthorService,
+		private songServ: SongsService,
+		translate: TranslateService
+	) {
 		this.authors$ = authorServ.getAuthors();
+		translate.addLangs(['de']);
+		translate.setDefaultLang('de');
+		translate.use('de');
 	}
 
 	ngOnInit() {}

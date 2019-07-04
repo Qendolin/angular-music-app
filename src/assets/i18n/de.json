@@ -1,0 +1,12 @@
+{
+	"NEW_SONG": {
+		"FORM": {
+			"URL": "Url:",
+			"NAME": "Name:",
+			"NAME_PLACEHOLDER": "Name des Lieds",
+			"LENGTH": "Länge:",
+			"AUTHOR": "Author:",
+			"SUBMIT": "Song hinzufügen"
+		}
+	}
+}
