@@ -34,7 +34,7 @@ export class NewSongComponent {
 				]
 			],
 			length: [undefined, [Validators.required, Validators.min(1), Validators.max(300)]],
-			authorName: [undefined, [Validators.required]]
+			author: [undefined, [Validators.required]]
 		});
 	}
 

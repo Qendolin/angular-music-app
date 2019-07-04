@@ -22,7 +22,7 @@
 	<label for="author"
 		>{{ 'NEW_SONG.FORM.AUTHOR' | translate }}
 		<br />
-		<input id="author" name="author" type="text" list="authors" formControlName="authorName" />
+		<input id="author" name="author" type="text" list="authors" formControlName="author" />
 		<datalist id="authors">
 			<option *ngFor="let author of authors$ | async" [value]="author.name">{{
 				author.name

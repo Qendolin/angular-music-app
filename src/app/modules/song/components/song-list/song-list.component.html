@@ -1,6 +1,6 @@
 <ul>
 	<li *ngFor="let song of songs">
-		<span *ngIf="song.author">{{ song.author.name }} • </span>
+		<span *ngIf="song.author">{{ song.author }} • </span>
 		<span>{{ song.name }}</span>
 	</li>
 </ul>
