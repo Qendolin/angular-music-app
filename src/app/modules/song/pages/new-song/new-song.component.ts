@@ -8,6 +8,7 @@ import { GenreService } from 'src/app/core/services/genre.service';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { TitleCasePipe } from '@angular/common';
 
 interface GenreChip {
 	name: string;
@@ -34,7 +35,8 @@ export class NewSongComponent {
 		authorServ: AuthorService,
 		private songServ: SongsService,
 		private fromBuilder: FormBuilder,
-		private genreServ: GenreService
+		private genreServ: GenreService,
+		private titleCase: TitleCasePipe
 	) {
 		this.authors$ = authorServ.getAuthors();
 
@@ -63,7 +65,7 @@ export class NewSongComponent {
 		this.genreServ.getGenres().subscribe(genres => {
 			this.genresAutocomp = genres.map(g => ({
 				name: g.name,
-				value: g.name.toLowerCase()
+				value: titleCase.transform(g.name)
 			}));
 		});
 	}
@@ -80,9 +82,9 @@ export class NewSongComponent {
 		if (!this.matAutocomplete.isOpen) {
 			const input = event.input;
 			const value = (event.value || '').trim();
-			const lowerValue = value.toLowerCase();
-			if (value && this.genres.find(g => g.value == lowerValue) == null) {
-				this.genres.push({ name: value, value: lowerValue });
+			const titleValue = this.titleCase.transform(value);
+			if (value && this.genres.find(g => g.value == titleValue) == null) {
+				this.genres.push({ name: value, value: titleValue });
 			}
 			if (input) {
 				input.value = '';
@@ -99,7 +101,7 @@ export class NewSongComponent {
 		this.genreServ.searchGenres(input).subscribe(genres => {
 			this.genresAutocomp = genres.map<GenreChip>(g => ({
 				name: g.name,
-				value: g.name.toLowerCase()
+				value: this.titleCase.transform(g.name)
 			}));
 		});
 	}

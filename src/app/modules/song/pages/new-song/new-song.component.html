@@ -50,6 +50,7 @@
 				[matChipInputFor]="genreList"
 				[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
 				(matChipInputTokenEnd)="genreAdd($event)"
+				[matChipInputAddOnBlur]="true"
 			/>
 		</mat-chip-list>
 		<mat-autocomplete #auto="matAutocomplete" (optionSelected)="genreSelected($event)">

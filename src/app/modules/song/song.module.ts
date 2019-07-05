@@ -8,6 +8,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatIconModule } from '@angular/material/icon';
+import { TitleCasePipe } from '@angular/common';
 
 @NgModule({
 	imports: [
@@ -21,6 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
 		MatAutocompleteModule,
 		MatIconModule
 	],
-	declarations: [SongBrowserComponent, SongListComponent, NewSongComponent]
+	declarations: [SongBrowserComponent, SongListComponent, NewSongComponent],
+	providers: [TitleCasePipe]
 })
 export class SongModule {}
