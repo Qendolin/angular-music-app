@@ -1,11 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { Song, Author, Genre } from 'src/app/shared';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Song, Author } from 'src/app/shared';
 import { Observable, of } from 'rxjs';
 import { AuthorService, SongsService } from 'src/app/core/services';
-import { take } from 'rxjs/operators';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { take, startWith, map } from 'rxjs/operators';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { GenreService } from 'src/app/core/services/genre.service';
-import { TagModel } from 'ngx-chips/core/accessor';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
+import { MatChipInputEvent } from '@angular/material/chips';
+
+interface GenreChip {
+	name: string;
+	value: string;
+}
 
 @Component({
 	selector: 'app-new-song',
@@ -14,8 +21,14 @@ import { TagModel } from 'ngx-chips/core/accessor';
 })
 export class NewSongComponent {
 	authors$: Observable<Author[]>;
-	autocompGenres: TagModel[];
+	genresAutocomp: GenreChip[];
 	songForm: FormGroup;
+	genres: GenreChip[] = [];
+
+	separatorKeysCodes: number[] = [ENTER, COMMA];
+
+	@ViewChild('genreInput', { static: false }) genreInput: ElementRef<HTMLInputElement>;
+	@ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
 
 	constructor(
 		authorServ: AuthorService,
@@ -39,25 +52,53 @@ export class NewSongComponent {
 			],
 			length: [undefined, [Validators.required, Validators.min(1), Validators.max(300)]],
 			author: [undefined, [Validators.required]],
-			genres: [undefined]
+			genres: [undefined],
+			genreInput: [undefined]
+		});
+
+		this.songForm.get('genreInput').valueChanges.subscribe(genre => {
+			this.searchGenres(genre);
 		});
 
 		this.genreServ.getGenres().subscribe(genres => {
-			this.autocompGenres = genres.map<TagModel>(g => ({
-				display: g.name,
+			this.genresAutocomp = genres.map(g => ({
+				name: g.name,
 				value: g.name.toLowerCase()
 			}));
 		});
 	}
 
-	onGenreAdd(tag: TagModel): Observable<TagModel> {
-		return of(tag.toLowerCase());
+	genreRemove(genre: GenreChip): void {
+		const index = this.genres.indexOf(genre);
+
+		if (index >= 0) {
+			this.genres.splice(index, 1);
+		}
+	}
+
+	genreAdd(event: MatChipInputEvent): void {
+		if (!this.matAutocomplete.isOpen) {
+			const input = event.input;
+			const value = (event.value || '').trim();
+			const lowerValue = value.toLowerCase();
+			if (value && this.genres.find(g => g.value == lowerValue) == null) {
+				this.genres.push({ name: value, value: lowerValue });
+			}
+			if (input) {
+				input.value = '';
+			}
+		}
+	}
+
+	genreSelected(event: MatAutocompleteSelectedEvent): void {
+		this.genres.push(event.option.value);
+		this.genreInput.nativeElement.value = '';
 	}
 
 	searchGenres(input: string) {
 		this.genreServ.searchGenres(input).subscribe(genres => {
-			this.autocompGenres = genres.map<TagModel>(g => ({
-				display: g.name,
+			this.genresAutocomp = genres.map<GenreChip>(g => ({
+				name: g.name,
 				value: g.name.toLowerCase()
 			}));
 		});
@@ -65,8 +106,10 @@ export class NewSongComponent {
 
 	addSong() {
 		if (this.songForm.invalid) return;
-
-		let song = <Song>this.songForm.value;
+		let song = this.songForm.value;
+		song.genres = this.genres.map(g => g.value);
+		delete song.genreInput;
+		console.log(song);
 		this.songServ
 			.addSong(song)
 			.pipe(take(1))

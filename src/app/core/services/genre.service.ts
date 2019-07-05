@@ -21,8 +21,7 @@ export class GenreService extends ServiceBase {
 	}
 
 	searchGenres(name: string): Observable<Genre[]> {
-		const params = new HttpParams();
-		params.set('name', name);
+		const params = new HttpParams().set('name', name);
 		return this.http
 			.get<Genre[]>(this.apiUrl, {
 				...this.httpOptions,

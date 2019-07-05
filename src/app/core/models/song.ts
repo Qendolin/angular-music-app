@@ -3,4 +3,5 @@ export interface Song {
 	url: string;
 	length: number;
 	author: string;
+	genre: string[];
 }

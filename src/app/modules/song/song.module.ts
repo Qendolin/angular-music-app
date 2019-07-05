@@ -4,7 +4,10 @@ import { NewSongComponent } from './pages/new-song/new-song.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SongBrowserComponent } from './pages/song-browser/song-browser.component';
 import { SongListComponent } from './components';
-import { TagInputModule } from 'ngx-chips';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
 	imports: [
@@ -13,7 +16,10 @@ import { TagInputModule } from 'ngx-chips';
 			{ path: 'new', component: NewSongComponent }
 		]),
 		SharedModule,
-		TagInputModule
+		MatChipsModule,
+		MatFormFieldModule,
+		MatAutocompleteModule,
+		MatIconModule
 	],
 	declarations: [SongBrowserComponent, SongListComponent, NewSongComponent]
 })
