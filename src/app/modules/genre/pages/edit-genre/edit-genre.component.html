@@ -1,0 +1,15 @@
+<form *ngIf="genre" [formGroup]="genreFormGroup" (ngSubmit)="saveEdits()">
+	<mat-form-field>
+		<input formControlName="name" placeholder="Name" matInput [value]="genre.name" />
+	</mat-form-field>
+	<app-song-list *ngIf="connectedSongs$" [songs]="connectedSongs$ | async"></app-song-list>
+	<button
+		mat-stroked-button
+		(click)="deleteGenre()"
+		[disabled]="!connectedSongs$ || (connectedSongs$ | async)?.length != 0"
+	>
+		<mat-icon class="md">delete_forever</mat-icon>Löschen
+	</button>
+	<br />
+	<button mat-stroked-button type="submit">Speichern</button>
+</form>

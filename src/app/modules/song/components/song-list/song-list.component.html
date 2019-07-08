@@ -1,9 +1,0 @@
-<ul>
-	<li *ngFor="let song of songs">
-		<a routerLink="/songs/{{ song.id }}/edit">
-			<mat-icon class="md" *ngIf="!song.public">lock</mat-icon>
-			<span *ngIf="song.author">{{ song.author }} • </span>
-			<span>{{ song.name }}</span>
-		</a>
-	</li>
-</ul>

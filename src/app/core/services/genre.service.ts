@@ -20,6 +20,12 @@ export class GenreService extends ServiceBase {
 			.pipe(catchError(handleError('getGenres', [])));
 	}
 
+	getGenre(id: number): Observable<Genre> {
+		return this.http
+			.get<Genre>(`${this.apiUrl}/${id}`, this.httpOptions)
+			.pipe(catchError(handleError('getGenre', null)));
+	}
+
 	searchGenres(name: string): Observable<Genre[]> {
 		const params = new HttpParams().set('name', name);
 		return this.http
@@ -27,6 +33,18 @@ export class GenreService extends ServiceBase {
 				...this.httpOptions,
 				params: params
 			})
-			.pipe(catchError(handleError('getGenres', [])));
+			.pipe(catchError(handleError('searchGenres', [])));
+	}
+
+	updateGenre(genre: Genre): Observable<void> {
+		return this.http
+			.put<Genre>(`${this.apiUrl}/${genre.id}`, genre, this.httpOptions)
+			.pipe(catchError(handleError('updateGenre', null)));
+	}
+
+	deleteGenre(id: number): Observable<Genre> {
+		return this.http
+			.delete(`${this.apiUrl}/${id}`, this.httpOptions)
+			.pipe(catchError(handleError('deleteGenre', null)));
 	}
 }

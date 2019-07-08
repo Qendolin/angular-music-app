@@ -1,0 +1,5 @@
+<mat-nav-list>
+	<a mat-list-item *ngFor="let genre of genres$ | async" routerLink="/genres/{{ genre.id }}/edit">
+		{{ genre.name }}
+	</a>
+</mat-nav-list>

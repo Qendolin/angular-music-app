@@ -21,7 +21,7 @@ export class EditSongComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		const id = this.route.snapshot.paramMap.get('id');
+		const id = +this.route.snapshot.paramMap.get('id');
 		this.songServ.getSong(id).subscribe(song => (this.song = song));
 	}
 

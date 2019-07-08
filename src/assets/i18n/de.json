@@ -15,10 +15,19 @@
 			"SAVED": "Gespeichert"
 		}
 	},
+	"GENRE": {
+		"FORM": {
+			"NAME": "Name"
+		},
+		"MSGS": {
+			"SAVED": "Gespeichert"
+		}
+	},
 	"SHELL": {
 		"NAV": {
 			"SONGS": "Lieder",
-			"NEW_SONG": "Neues Lied"
+			"NEW_SONG": "Neues Lied",
+			"GENRES": "Genre"
 		}
 	}
 }
