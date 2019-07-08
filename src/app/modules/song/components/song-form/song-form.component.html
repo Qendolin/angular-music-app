@@ -38,7 +38,7 @@
 				(removed)="genreRemove(genre)"
 			>
 				{{ genre.name }}
-				<mat-icon matChipRemove>X</mat-icon>
+				<mat-icon matChipRemove>clear</mat-icon>
 			</mat-chip>
 			<input
 				[placeholder]="'SONG.FORM.GENRES_PLACEHOLDER' | translate"
@@ -59,7 +59,7 @@
 		</mat-autocomplete>
 	</mat-form-field>
 	<mat-checkbox formControlName="public">{{ 'SONG.FORM.PUBLIC' | translate }}</mat-checkbox>
-	<button [disabled]="songFormGroup.invalid" type="submit">
+	<button color="primary" mat-stroked-button [disabled]="songFormGroup.invalid" type="submit">
 		{{ 'SONG.FORM.SUBMIT' | translate }}
 	</button>
 </form>

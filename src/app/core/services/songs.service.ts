@@ -38,4 +38,10 @@ export class SongsService extends ServiceBase {
 			.put<Song>(`${this.apiUrl}/${song.id}`, song, this.httpOptions)
 			.pipe(catchError(handleError('updateSong', null)));
 	}
+
+	deleteSong(id: number): Observable<Song> {
+		return this.http
+			.delete<Song>(`${this.apiUrl}/${id}`, this.httpOptions)
+			.pipe(catchError(handleError('updateSong', null)));
+	}
 }

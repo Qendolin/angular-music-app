@@ -10,6 +10,9 @@
 			"GENRES": "Genres:",
 			"GENRES_PLACEHOLDER": "Genre auswählen",
 			"PUBLIC": "Öffentlich"
+		},
+		"MSGS": {
+			"SAVED": "Gespeichert"
 		}
 	},
 	"SHELL": {

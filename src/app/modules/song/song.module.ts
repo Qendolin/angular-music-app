@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TitleCasePipe } from '@angular/common';
 import { EditSongComponent } from './pages/edit-song/edit-song.component';
 
@@ -24,7 +26,9 @@ import { EditSongComponent } from './pages/edit-song/edit-song.component';
 		MatFormFieldModule,
 		MatAutocompleteModule,
 		MatIconModule,
-		MatCheckboxModule
+		MatCheckboxModule,
+		MatButtonModule,
+		MatSnackBarModule
 	],
 	declarations: [
 		SongBrowserComponent,

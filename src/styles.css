@@ -29,20 +29,8 @@ select {
 	width: 142.6px;
 }
 
-button {
-	padding: 5px;
-	background-color: var(--col-primary);
-	color: white;
-}
-
-button:not([disabled]) {
-	cursor: pointer;
-}
-
-button[disabled] {
-	background-color: var(--col-primary-disabled);
-}
-
-.material-icons.md-12 {
-	font-size: 12pt;
+.material-icons.md {
+	font-size: 17.6px;
+	height: 17.6px;
+	width: 17.6px;
 }
