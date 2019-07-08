@@ -1,5 +1,5 @@
 <app-song-form *ngIf="song" [song]="song" (songChanged)="updateSong($event)"></app-song-form>
 <button mat-stroked-button (click)="deleteSong()">
 	<mat-icon color="warn" class="md">delete_forever</mat-icon>
-	Löschen
+	{{ 'SONG.FORM.DELETE' | translate }}
 </button>

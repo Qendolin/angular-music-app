@@ -1,15 +1,21 @@
 <form *ngIf="genre" [formGroup]="genreFormGroup" (ngSubmit)="saveEdits()">
 	<mat-form-field>
-		<input formControlName="name" placeholder="Name" matInput [value]="genre.name" />
+		<input
+			formControlName="name"
+			placeholder="{{ 'GENRE.FORM.NAME' | translate }}"
+			matInput
+			[value]="genre.name"
+		/>
 	</mat-form-field>
 	<app-song-list *ngIf="connectedSongs$" [songs]="connectedSongs$ | async"></app-song-list>
 	<button
 		mat-stroked-button
+		type="button"
 		(click)="deleteGenre()"
 		[disabled]="!connectedSongs$ || (connectedSongs$ | async)?.length != 0"
 	>
-		<mat-icon class="md">delete_forever</mat-icon>Löschen
+		<mat-icon class="md">delete_forever</mat-icon>{{ 'GENRE.FORM.DELETE' | translate }}
 	</button>
 	<br />
-	<button mat-stroked-button type="submit">Speichern</button>
+	<button mat-stroked-button type="submit">{{ 'GENRE.FORM.SUBMIT' | translate }}</button>
 </form>

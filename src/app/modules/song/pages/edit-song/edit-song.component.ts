@@ -34,8 +34,11 @@ export class EditSongComponent implements OnInit {
 	}
 
 	deleteSong() {
-		this.songServ.deleteSong(this.song.id).subscribe(() => {
-			this.router.navigateByUrl('/songs');
+		this.translateServ.get('SHELL.MSGS.SURE').subscribe(res => {
+			if (!confirm(res)) return;
+			this.songServ.deleteSong(this.song.id).subscribe(() => {
+				this.router.navigateByUrl('/songs');
+			});
 		});
 	}
 }

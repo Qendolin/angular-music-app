@@ -7,6 +7,7 @@
 			"LENGTH": "Länge:",
 			"AUTHOR": "Author:",
 			"SUBMIT": "Song Speichern",
+			"DELETE": "Löschen",
 			"GENRES": "Genres:",
 			"GENRES_PLACEHOLDER": "Genre auswählen",
 			"PUBLIC": "Öffentlich"
@@ -17,7 +18,9 @@
 	},
 	"GENRE": {
 		"FORM": {
-			"NAME": "Name"
+			"NAME": "Name",
+			"SUBMIT": "Speichern",
+			"DELETE": "Löschen"
 		},
 		"MSGS": {
 			"SAVED": "Gespeichert"
@@ -28,6 +31,9 @@
 			"SONGS": "Lieder",
 			"NEW_SONG": "Neues Lied",
 			"GENRES": "Genre"
+		},
+		"MSGS": {
+			"SURE": "Sicher?"
 		}
 	}
 }
