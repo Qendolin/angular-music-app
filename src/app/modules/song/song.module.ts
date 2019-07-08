@@ -8,11 +8,13 @@ import { TitleCasePipe } from '@angular/common';
 import { EditSongComponent } from './pages/edit-song/edit-song.component';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { SongListModule } from 'src/app/shared/components/song-list/song-list.module';
+import { PlaySongComponent } from './pages/play-song/play-song.component';
 
 @NgModule({
 	imports: [
 		RouterModule.forChild([
 			{ path: '', component: SongBrowserComponent },
+			{ path: ':id', component: PlaySongComponent },
 			{ path: 'new', component: NewSongComponent },
 			{ path: ':id/edit', component: EditSongComponent }
 		]),
@@ -20,7 +22,13 @@ import { SongListModule } from 'src/app/shared/components/song-list/song-list.mo
 		MaterialModule,
 		SongListModule
 	],
-	declarations: [SongBrowserComponent, NewSongComponent, SongFormComponent, EditSongComponent],
+	declarations: [
+		SongBrowserComponent,
+		NewSongComponent,
+		SongFormComponent,
+		EditSongComponent,
+		PlaySongComponent
+	],
 	exports: [],
 	providers: [TitleCasePipe]
 })
