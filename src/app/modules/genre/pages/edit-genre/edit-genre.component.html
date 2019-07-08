@@ -17,5 +17,7 @@
 		<mat-icon class="md">delete_forever</mat-icon>{{ 'GENRE.FORM.DELETE' | translate }}
 	</button>
 	<br />
-	<button mat-stroked-button type="submit">{{ 'GENRE.FORM.SUBMIT' | translate }}</button>
+	<button [disabled]="genreFormGroup.invalid" mat-stroked-button type="submit">
+		{{ 'GENRE.FORM.SUBMIT' | translate }}
+	</button>
 </form>
