@@ -1,5 +1,7 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 <ul>
 	<li *ngFor="let song of songs">
+		<span class="material-icons md-12" *ngIf="!song.public">lock</span>
 		<span *ngIf="song.author">{{ song.author }} • </span>
 		<span>{{ song.name }}</span>
 	</li>

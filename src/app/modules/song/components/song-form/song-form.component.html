@@ -1,0 +1,65 @@
+<form id="songForm" (ngSubmit)="emitSong($event)" [formGroup]="songFormGroup">
+	<label for="name">
+		{{ 'SONG.FORM.NAME' | translate }}
+		<br />
+		<input
+			type="text"
+			id="name"
+			formControlName="name"
+			[placeholder]="'SONG.FORM.NAME_PLACEHOLDER' | translate"
+		/>
+	</label>
+	<label for="url">
+		{{ 'SONG.FORM.URL' | translate }}
+		<br />
+		<input id="url" type="text" formControlName="url" placeholder="https://..." />
+	</label>
+	<label for="length">
+		{{ 'SONG.FORM.LENGTH' | translate }}
+		<br />
+		<input id="length" formControlName="length" type="number" step="1" />
+	</label>
+	<label for="author">
+		{{ 'SONG.FORM.AUTHOR' | translate }}
+		<br />
+		<input id="author" name="author" type="text" list="authors" formControlName="author" />
+		<datalist id="authors">
+			<option *ngFor="let author of authors$ | async" [value]="author.name">{{
+				author.name
+			}}</option>
+		</datalist>
+	</label>
+	<mat-form-field>
+		<mat-label>{{ 'SONG.FORM.GENRES' | translate }}</mat-label>
+		<mat-chip-list #genreList>
+			<mat-chip
+				*ngFor="let genre of genres"
+				[removable]="true"
+				(removed)="genreRemove(genre)"
+			>
+				{{ genre.name }}
+				<mat-icon matChipRemove>X</mat-icon>
+			</mat-chip>
+			<input
+				[placeholder]="'SONG.FORM.GENRES_PLACEHOLDER' | translate"
+				#genreInput
+				formControlName="genreInput"
+				[matAutocomplete]="auto"
+				[matChipInputFor]="genreList"
+				[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+				(matChipInputTokenEnd)="genreAdd($event)"
+				[matChipInputAddOnBlur]="true"
+				maxlength="50"
+			/>
+		</mat-chip-list>
+		<mat-autocomplete #auto="matAutocomplete" (optionSelected)="genreSelected($event)">
+			<mat-option *ngFor="let genre of genresAutocomp" [value]="genre">
+				{{ genre.name }}
+			</mat-option>
+		</mat-autocomplete>
+	</mat-form-field>
+	<mat-checkbox formControlName="public">{{ 'SONG.FORM.PUBLIC' | translate }}</mat-checkbox>
+	<button [disabled]="songFormGroup.invalid" type="submit">
+		{{ 'SONG.FORM.SUBMIT' | translate }}
+	</button>
+</form>

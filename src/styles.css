@@ -42,3 +42,7 @@ button:not([disabled]) {
 button[disabled] {
 	background-color: var(--col-primary-disabled);
 }
+
+.material-icons.md-12 {
+	font-size: 12pt;
+}

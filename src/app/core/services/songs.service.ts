@@ -21,9 +21,21 @@ export class SongsService extends ServiceBase {
 			.pipe(catchError(handleError('getSongs', [])));
 	}
 
+	getSong(id: string): Observable<Song> {
+		return this.http
+			.get(`${this.apiUrl}/${id}`, this.httpOptions)
+			.pipe(catchError(handleError('getSong', null)));
+	}
+
 	addSong(song: Song): Observable<Song> {
 		return this.http
 			.post<Song>(this.apiUrl, song, this.httpOptions)
 			.pipe(catchError(handleError('addSong', null)));
+	}
+
+	updateSong(song: Song): Observable<void> {
+		return this.http
+			.put<Song>(`${this.apiUrl}/${song.id}`, song, this.httpOptions)
+			.pipe(catchError(handleError('updateSong', null)));
 	}
 }

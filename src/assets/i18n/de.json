@@ -1,14 +1,15 @@
 {
-	"NEW_SONG": {
+	"SONG": {
 		"FORM": {
 			"URL": "Url:",
 			"NAME": "Name:",
 			"NAME_PLACEHOLDER": "Name des Lieds",
 			"LENGTH": "Länge:",
 			"AUTHOR": "Author:",
-			"SUBMIT": "Song hinzufügen",
+			"SUBMIT": "Song Speichern",
 			"GENRES": "Genres:",
-			"GENRES_PLACEHOLDER": "Genre auswählen"
+			"GENRES_PLACEHOLDER": "Genre auswählen",
+			"PUBLIC": "Öffentlich"
 		}
 	},
 	"SHELL": {
