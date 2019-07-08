@@ -76,7 +76,7 @@ export class SongFormComponent implements OnInit {
 			author: [this.song.author, [Validators.required]],
 			genres: [this.song.genres],
 			genreInput: [undefined],
-			public: [this.song.public]
+			public: [this.song.public || false]
 		});
 
 		this.songFormGroup.get('genreInput').valueChanges.subscribe(genre => {

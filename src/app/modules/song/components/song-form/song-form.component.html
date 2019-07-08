@@ -1,34 +1,38 @@
 <form id="songForm" (ngSubmit)="emitSong($event)" [formGroup]="songFormGroup">
-	<label for="name">
-		{{ 'SONG.FORM.NAME' | translate }}
-		<br />
+	<mat-form-field>
+		<mat-label>{{ 'SONG.FORM.NAME' | translate }}</mat-label>
 		<input
+			matInput
 			type="text"
 			id="name"
 			formControlName="name"
 			[placeholder]="'SONG.FORM.NAME_PLACEHOLDER' | translate"
 		/>
-	</label>
-	<label for="url">
-		{{ 'SONG.FORM.URL' | translate }}
-		<br />
-		<input id="url" type="text" formControlName="url" placeholder="https://..." />
-	</label>
-	<label for="length">
-		{{ 'SONG.FORM.LENGTH' | translate }}
-		<br />
-		<input id="length" formControlName="length" type="number" step="1" />
-	</label>
-	<label for="author">
-		{{ 'SONG.FORM.AUTHOR' | translate }}
-		<br />
-		<input id="author" name="author" type="text" list="authors" formControlName="author" />
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>{{ 'SONG.FORM.URL' | translate }}</mat-label>
+		<input matInput id="url" type="text" formControlName="url" placeholder="https://..." />
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>{{ 'SONG.FORM.LENGTH' | translate }}</mat-label>
+		<input matInput id="length" formControlName="length" type="number" step="1" />
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>{{ 'SONG.FORM.AUTHOR' | translate }}</mat-label>
+		<input
+			matInput
+			id="author"
+			name="author"
+			type="text"
+			list="authors"
+			formControlName="author"
+		/>
 		<datalist id="authors">
-			<option *ngFor="let author of authors$ | async" [value]="author.name">{{
-				author.name
-			}}</option>
+			<option *ngFor="let author of authors$ | async" [value]="author.name">
+				{{ author.name }}
+			</option>
 		</datalist>
-	</label>
+	</mat-form-field>
 	<mat-form-field>
 		<mat-label>{{ 'SONG.FORM.GENRES' | translate }}</mat-label>
 		<mat-chip-list #genreList>

@@ -1,14 +1,14 @@
 {
 	"SONG": {
 		"FORM": {
-			"URL": "Url:",
-			"NAME": "Name:",
+			"URL": "Url",
+			"NAME": "Name",
 			"NAME_PLACEHOLDER": "Name des Lieds",
-			"LENGTH": "Länge:",
-			"AUTHOR": "Author:",
+			"LENGTH": "Länge",
+			"AUTHOR": "Author",
 			"SUBMIT": "Song Speichern",
 			"DELETE": "Löschen",
-			"GENRES": "Genres:",
+			"GENRES": "Genres",
 			"GENRES_PLACEHOLDER": "Genre auswählen",
 			"PUBLIC": "Öffentlich"
 		},
