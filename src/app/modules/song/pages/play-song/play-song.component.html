@@ -3,4 +3,6 @@
 	<p>{{ 'SONG.FORM.AUTHOR' | translate }}: {{ song.author }}</p>
 	<p>{{ 'SONG.FORM.LENGTH' | translate }}: {{ song.length }} sek.</p>
 	<audio controls [src]="song.url"></audio>
+	<br />
+	<a mat-stroked-button routerLink="./edit">Bearbeiten</a>
 </div>

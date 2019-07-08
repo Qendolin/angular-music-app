@@ -1,5 +1,5 @@
 <mat-nav-list>
-	<a mat-list-item *ngFor="let song of songs" routerLink="/songs/{{ song.id }}/edit">
+	<a mat-list-item *ngFor="let song of songs" routerLink="/songs/{{ song.id }}">
 		<mat-icon class="md" *ngIf="!song.public">lock</mat-icon>
 		<span *ngIf="song.author">{{ song.author }}&nbsp;•&nbsp;</span>
 		<span>{{ song.name }}</span>
