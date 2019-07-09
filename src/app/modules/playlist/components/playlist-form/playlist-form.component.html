@@ -1,0 +1,21 @@
+<form *ngIf="playlist" (ngSubmit)="emitPlaylist()" [formGroup]="playlistFormGroup">
+	<mat-form-field>
+		<mat-label>{{ 'PLAYLIST.FORM.NAME' | translate }}</mat-label>
+		<input matInput formControlName="name" />
+	</mat-form-field>
+	<br />
+	<div *ngIf="playlist && playlist.songs">
+		<h2>{{ 'PLAYLIST.FORM.SONGS' | translate }}</h2>
+		<mat-nav-list>
+			<a mat-list-item *ngFor="let song of songs" routerLink="/songs/{{ song.id }}">
+				{{ song.name }}
+				<button mat-icon-button (click)="removeSong(song.id)">
+					<mat-icon>clear</mat-icon>
+				</button>
+			</a>
+		</mat-nav-list>
+	</div>
+	<button mat-stroked-button type="submit" [disabled]="playlistFormGroup.invalid">
+		{{ 'PLAYLIST.FORM.SUBMIT' | translate }}
+	</button>
+</form>

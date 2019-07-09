@@ -8,6 +8,10 @@
 		/>
 	</mat-form-field>
 	<app-song-list *ngIf="connectedSongs$" [songs]="connectedSongs$ | async"></app-song-list>
+	<button [disabled]="genreFormGroup.invalid" mat-stroked-button type="submit">
+		{{ 'GENRE.FORM.SUBMIT' | translate }}
+	</button>
+	<br />
 	<button
 		mat-stroked-button
 		type="button"
@@ -15,9 +19,5 @@
 		[disabled]="!connectedSongs$ || (connectedSongs$ | async)?.length != 0"
 	>
 		<mat-icon class="md">delete_forever</mat-icon>{{ 'GENRE.FORM.DELETE' | translate }}
-	</button>
-	<br />
-	<button [disabled]="genreFormGroup.invalid" mat-stroked-button type="submit">
-		{{ 'GENRE.FORM.SUBMIT' | translate }}
 	</button>
 </form>

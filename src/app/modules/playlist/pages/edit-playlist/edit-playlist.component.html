@@ -1,0 +1,5 @@
+<app-playlist-form
+	*ngIf="playlist"
+	[playlist]="playlist"
+	(playlistChanged)="updatePlaylist($event)"
+></app-playlist-form>

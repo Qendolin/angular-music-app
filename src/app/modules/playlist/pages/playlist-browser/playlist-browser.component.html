@@ -1,0 +1,5 @@
+<mat-nav-list>
+	<a mat-list-item *ngFor="let pl of playlists$ | async" routerLink="./{{ pl.id }}">{{
+		pl.name
+	}}</a>
+</mat-nav-list>

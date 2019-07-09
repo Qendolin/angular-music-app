@@ -19,8 +19,18 @@
 	"GENRE": {
 		"FORM": {
 			"NAME": "Name",
-			"SUBMIT": "Speichern",
+			"SUBMIT": "Genre Speichern",
 			"DELETE": "Löschen"
+		},
+		"MSGS": {
+			"SAVED": "Gespeichert"
+		}
+	},
+	"PLAYLIST": {
+		"FORM": {
+			"NAME": "Name",
+			"SONGS": "Lieder",
+			"SUBMIT": "Playliste Speichern"
 		},
 		"MSGS": {
 			"SAVED": "Gespeichert"
@@ -30,7 +40,9 @@
 		"NAV": {
 			"SONGS": "Lieder",
 			"NEW_SONG": "Neues Lied",
-			"GENRES": "Genre"
+			"GENRES": "Genre",
+			"PLAYLISTS": "Playlisten",
+			"NEW_PLAYLIST": "Neue Playliste"
 		},
 		"MSGS": {
 			"SURE": "Sicher?"
