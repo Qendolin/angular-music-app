@@ -16,8 +16,8 @@ import { SongPlayerModule } from 'src/app/shared/components/song-player/song-pla
 	imports: [
 		RouterModule.forChild([
 			{ path: '', component: SongBrowserComponent },
-			{ path: ':id', component: PlaySongComponent },
 			{ path: 'new', component: NewSongComponent },
+			{ path: ':id', component: PlaySongComponent },
 			{ path: ':id/edit', component: EditSongComponent }
 		]),
 		SharedModule,
