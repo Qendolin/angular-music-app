@@ -46,6 +46,10 @@
 		},
 		"MSGS": {
 			"SURE": "Sicher?"
+		},
+		"DIALOG": {
+			"CANCEL": "Abbrechen",
+			"OK": "Ok"
 		}
 	}
 }

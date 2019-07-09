@@ -1,6 +1,6 @@
 import { Song } from '.';
 
-export class Playlist {
+export interface Playlist {
 	id: number;
 	name: string;
 	songs: Song[];

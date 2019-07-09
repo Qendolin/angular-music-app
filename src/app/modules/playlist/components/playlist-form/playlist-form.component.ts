@@ -29,7 +29,9 @@ export class PlaylistFormComponent implements OnInit {
 		this.playlistEmitter.emit(this.playlist);
 	}
 
-	removeSong(id: number) {
+	removeSong(event: any, id: number) {
+		event.preventDefault();
+		event.stopImmediatePropagation();
 		const index = this.playlist.songs.findIndex(song => song.id == id);
 		if (index == -1) return;
 		this.playlist.songs.splice(index, 1);

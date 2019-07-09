@@ -1,4 +1,5 @@
 import { Genre } from './genre';
+import { Playlist } from './playlist';
 
 export interface Song {
 	id: number;
@@ -8,4 +9,5 @@ export interface Song {
 	author: string;
 	genres: Genre[];
 	public: boolean;
+	playlists: Playlist[];
 }

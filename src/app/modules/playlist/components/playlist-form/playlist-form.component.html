@@ -7,9 +7,9 @@
 	<div *ngIf="playlist && playlist.songs">
 		<h2>{{ 'PLAYLIST.FORM.SONGS' | translate }}</h2>
 		<mat-nav-list>
-			<a mat-list-item *ngFor="let song of songs" routerLink="/songs/{{ song.id }}">
-				{{ song.name }}
-				<button mat-icon-button (click)="removeSong(song.id)">
+			<a mat-list-item *ngFor="let song of playlist.songs" routerLink="/songs/{{ song.id }}">
+				<span matLine>{{ song.name }}</span>
+				<button mat-icon-button (click)="removeSong($event, song.id)">
 					<mat-icon>clear</mat-icon>
 				</button>
 			</a>

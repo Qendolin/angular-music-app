@@ -1,0 +1,9 @@
+<mat-selection-list #selectedLists>
+	<mat-list-option #listOptions *ngFor="let list of playlists$ | async" [value]="list.id">
+		{{ list.name }}
+	</mat-list-option>
+</mat-selection-list>
+<div nat-dialog-actions>
+	<button mat-stroked-button (click)="cancel()">{{ 'SHELL.DIALOG.CANCEL' | translate }}</button>
+	<button mat-stroked-button (click)="submit()">{{ 'SHELL.DIALOG.OK' | translate }}</button>
+</div>
