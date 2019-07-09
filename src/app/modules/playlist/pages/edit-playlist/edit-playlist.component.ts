@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PlaylistService } from 'src/app/core/services/playlist.service';
 import { Playlist } from 'src/app/shared';
 import { TranslateService } from '@ngx-translate/core';
@@ -15,6 +15,7 @@ export class EditPlaylistComponent implements OnInit {
 
 	constructor(
 		private route: ActivatedRoute,
+		private router: Router,
 		private playlistServ: PlaylistService,
 		private translateServ: TranslateService,
 		private snackBar: MatSnackBar

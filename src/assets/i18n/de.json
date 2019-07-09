@@ -8,6 +8,7 @@
 			"AUTHOR": "Author",
 			"SUBMIT": "Song Speichern",
 			"DELETE": "Löschen",
+			"EDIT": "Bearbeiten",
 			"GENRES": "Genres",
 			"GENRES_PLACEHOLDER": "Genre auswählen",
 			"PUBLIC": "Öffentlich"
@@ -30,7 +31,8 @@
 		"FORM": {
 			"NAME": "Name",
 			"SONGS": "Lieder",
-			"SUBMIT": "Playliste Speichern"
+			"SUBMIT": "Playliste Speichern",
+			"PLAY": "Abspielen"
 		},
 		"MSGS": {
 			"SAVED": "Gespeichert"

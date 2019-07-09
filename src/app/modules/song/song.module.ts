@@ -10,6 +10,7 @@ import { MaterialModule } from 'src/app/shared/material.module';
 import { SongListModule } from 'src/app/shared/components/song-list/song-list.module';
 import { PlaySongComponent } from './pages/play-song/play-song.component';
 import { PlaylistSelectorModule } from 'src/app/shared/components/playlist-selector/playlist-selector.module';
+import { SongPlayerModule } from 'src/app/shared/components/song-player/song-player.module';
 
 @NgModule({
 	imports: [
@@ -22,7 +23,8 @@ import { PlaylistSelectorModule } from 'src/app/shared/components/playlist-selec
 		SharedModule,
 		MaterialModule,
 		SongListModule,
-		PlaylistSelectorModule
+		PlaylistSelectorModule,
+		SongPlayerModule
 	],
 	declarations: [
 		SongBrowserComponent,

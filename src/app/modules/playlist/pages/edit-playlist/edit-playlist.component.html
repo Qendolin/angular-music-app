@@ -3,3 +3,6 @@
 	[playlist]="playlist"
 	(playlistChanged)="updatePlaylist($event)"
 ></app-playlist-form>
+<a *ngIf="playlist && playlist.songs && playlist.songs.length" mat-stroked-button routerLink="..">{{
+	'PLAYLIST.FORM.PLAY' | translate
+}}</a>

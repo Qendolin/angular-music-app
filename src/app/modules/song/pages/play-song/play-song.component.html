@@ -1,11 +1,1 @@
-<div *ngIf="song">
-	<h2><mat-icon *ngIf="!song.public" class="md">lock</mat-icon>{{ song.name }}</h2>
-	<p>{{ 'SONG.FORM.AUTHOR' | translate }}: {{ song.author }}</p>
-	<p>{{ 'SONG.FORM.LENGTH' | translate }}: {{ song.length }} sek.</p>
-	<audio controls [src]="song.url"></audio>
-	<button mat-icon-button (click)="showPlaylistDialog()">
-		<mat-icon>list</mat-icon>
-	</button>
-	<br />
-	<a mat-stroked-button routerLink="./edit">Bearbeiten</a>
-</div>
+<app-song-player [song]="song"></app-song-player>

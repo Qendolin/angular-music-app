@@ -1,0 +1,10 @@
+<app-song-player
+	[song]="currentSong"
+	(stateChanged)="onPlayerStateChanged($event)"
+></app-song-player>
+<button mat-icon-button (click)="playPrevSong()">
+	<mat-icon>skip_previous</mat-icon>
+</button>
+<button mat-icon-button (click)="playNextSong()">
+	<mat-icon>skip_next</mat-icon>
+</button>

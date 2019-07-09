@@ -7,23 +7,28 @@ import { PlaylistBrowserComponent } from './pages/playlist-browser/playlist-brow
 import { NewPlaylistComponent } from './pages/new-playlist/new-playlist.component';
 import { PlaylistFormComponent } from './components/playlist-form/playlist-form.component';
 import { EditPlaylistComponent } from './pages/edit-playlist/edit-playlist.component';
+import { SongPlayerModule } from 'src/app/shared/components/song-player/song-player.module';
+import { PlayPlaylistComponent } from './pages/play-playlist/play-playlist.component';
 
 @NgModule({
 	imports: [
 		RouterModule.forChild([
 			{ path: '', component: PlaylistBrowserComponent },
 			{ path: 'new', component: NewPlaylistComponent },
-			{ path: ':id', component: EditPlaylistComponent }
+			{ path: ':id', component: PlayPlaylistComponent },
+			{ path: ':id/edit', component: EditPlaylistComponent }
 		]),
 		SharedModule,
 		MaterialModule,
-		SongListModule
+		SongListModule,
+		SongPlayerModule
 	],
 	declarations: [
 		PlaylistBrowserComponent,
 		NewPlaylistComponent,
 		PlaylistFormComponent,
-		EditPlaylistComponent
+		EditPlaylistComponent,
+		PlayPlaylistComponent
 	]
 })
 export class PlaylistModule {}
