@@ -48,11 +48,13 @@ export class SongsService extends ServiceBase {
 	getSongsFiltered(filter: any): Observable<Song[]> {
 		let params = new HttpParams();
 		for (const prop in filter) {
-			params = params.set(prop, filter[prop]);
+			if (filter.hasOwnProperty(prop)) {
+				params = params.set(prop, filter[prop]);
+			}
 		}
 		return this.http.get<Song[]>(this.apiUrl, {
 			...this.httpOptions,
-			params: params
+			params
 		});
 	}
 }

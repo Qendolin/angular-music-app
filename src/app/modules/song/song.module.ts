@@ -13,27 +13,27 @@ import { PlaylistSelectorModule } from 'src/app/shared/components/playlist-selec
 import { SongPlayerModule } from 'src/app/shared/components/song-player/song-player.module';
 
 @NgModule({
-	imports: [
-		RouterModule.forChild([
-			{ path: '', component: SongBrowserComponent },
-			{ path: 'new', component: NewSongComponent },
-			{ path: ':id', component: PlaySongComponent },
-			{ path: ':id/edit', component: EditSongComponent }
-		]),
-		SharedModule,
-		MaterialModule,
-		SongListModule,
-		PlaylistSelectorModule,
-		SongPlayerModule
-	],
-	declarations: [
-		SongBrowserComponent,
-		NewSongComponent,
-		SongFormComponent,
-		EditSongComponent,
-		PlaySongComponent
-	],
-	exports: [],
-	providers: [TitleCasePipe]
+  imports: [
+	RouterModule.forChild([
+		{ path: '', component: SongBrowserComponent },
+		{ path: 'new', component: NewSongComponent },
+		{ path: ':id', component: PlaySongComponent },
+		{ path: ':id/edit', component: EditSongComponent }
+	]),
+	SharedModule,
+	MaterialModule,
+	SongListModule,
+	PlaylistSelectorModule,
+	SongPlayerModule
+  ],
+  declarations: [
+	SongBrowserComponent,
+	NewSongComponent,
+	SongFormComponent,
+	EditSongComponent,
+	PlaySongComponent
+  ],
+  exports: [],
+  providers: [TitleCasePipe]
 })
 export class SongModule {}

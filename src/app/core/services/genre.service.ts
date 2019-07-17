@@ -31,7 +31,7 @@ export class GenreService extends ServiceBase {
 		return this.http
 			.get<Genre[]>(this.apiUrl, {
 				...this.httpOptions,
-				params: params
+				params
 			})
 			.pipe(catchError(handleError('searchGenres', [])));
 	}

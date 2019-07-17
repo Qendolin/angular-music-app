@@ -51,7 +51,7 @@ export class EditGenreComponent implements OnInit {
 
 	deleteGenre() {
 		this.translateServ.get('SHELL.MSGS.SURE').subscribe(res => {
-			if (!confirm(res)) return;
+			if (!confirm(res)) { return; }
 			this.genreServ.deleteGenre(this.genre.id).subscribe(() => {
 				this.router.navigateByUrl('/genres');
 			});

@@ -25,7 +25,7 @@ import { TitleCasePipe } from '@angular/common';
 })
 export class SongFormComponent implements OnInit {
 	@Input() song: Song;
-	@Output('songChanged') songEmitter = new EventEmitter<Song>();
+	@Output() songChanged = new EventEmitter<Song>();
 
 	authors$: Observable<Author[]>;
 	genresAutocomp: Genre[];
@@ -53,7 +53,7 @@ export class SongFormComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.song = this.song || <Song>{};
+		this.song = this.song || ({} as Song);
 
 		this.genres = this.song.genres || [];
 
@@ -97,7 +97,7 @@ export class SongFormComponent implements OnInit {
 			const input = event.input;
 			const value = (event.value || '').trim();
 			const titleValue = this.titleCase.transform(value);
-			if (value && this.genres.find(g => g.name == titleValue) == null) {
+			if (value && this.genres.find(g => g.name === titleValue) == null) {
 				this.genres.push({ name: value, id: null });
 			}
 			if (input) {
@@ -121,12 +121,14 @@ export class SongFormComponent implements OnInit {
 	}
 
 	emitSong() {
-		if (this.songFormGroup.invalid) return;
-		let song = this.songFormGroup.value;
+		if (this.songFormGroup.invalid) {
+			return;
+		}
+		const song = this.songFormGroup.value;
 		song.genres = this.genres.map(g => ({ id: g.id, name: g.name }));
 		song.id = this.song.id;
 		delete song.genreInput;
-		console.log('Emitting Song:', <Song>song);
-		this.songEmitter.emit(<Song>song);
+		console.log('Emitting Song:', song as Song);
+		this.songChanged.emit(song as Song);
 	}
 }

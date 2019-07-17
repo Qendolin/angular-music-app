@@ -13,8 +13,10 @@ export class NewSongComponent {
 	constructor(private songServ: SongsService, private router: Router) {}
 
 	addSong(song: Song) {
-		this.songServ.addSong(song).subscribe(song => {
-			if (song == null) return;
+		this.songServ.addSong(song).subscribe(s => {
+			if (s == null) {
+				return;
+			}
 			this.router.navigateByUrl('/songs');
 		});
 	}

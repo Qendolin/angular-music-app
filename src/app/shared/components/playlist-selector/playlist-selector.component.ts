@@ -21,14 +21,14 @@ import { delay } from 'rxjs/operators';
 	templateUrl: './playlist-selector.component.html',
 	styleUrls: ['./playlist-selector.component.css']
 })
-export class PlaylistSelectorDialog implements AfterViewInit {
+export class PlaylistSelectorDialogComponent implements AfterViewInit {
 	playlists$: Observable<Playlist[]>;
 	@ViewChild('selectedLists', { static: false }) selectedLists: MatSelectionList;
 	@ViewChildren('listOptions') listOptions: QueryList<any>;
 	constructor(
 		playlistServ: PlaylistService,
 		private songServ: SongsService,
-		private dialogRef: MatDialogRef<PlaylistSelectorDialog>,
+		private dialogRef: MatDialogRef<PlaylistSelectorDialogComponent>,
 		@Inject(MAT_DIALOG_DATA) private song: Song
 	) {
 		this.playlists$ = playlistServ.getPlaylists();
@@ -36,9 +36,11 @@ export class PlaylistSelectorDialog implements AfterViewInit {
 
 	ngAfterViewInit() {
 		this.listOptions.changes.pipe(delay(0)).subscribe(() => {
-			if (!this.song.playlists) return;
+			if (!this.song.playlists) {
+				return;
+			}
 			const selectedListOptions = this.selectedLists.options.filter(
-				opt => this.song.playlists.find(pl => pl.id == opt.value) != null
+				opt => this.song.playlists.find(pl => pl.id === opt.value) != null
 			);
 			this.selectedLists.selectedOptions.select(...selectedListOptions);
 		});
@@ -51,7 +53,7 @@ export class PlaylistSelectorDialog implements AfterViewInit {
 	submit() {
 		const selectedPlIds = this.selectedLists.selectedOptions.selected.map(opt => opt.value);
 		this.playlists$.subscribe(playlists => {
-			this.song.playlists = selectedPlIds.map(id => playlists.find(pl => pl.id == id));
+			this.song.playlists = selectedPlIds.map(id => playlists.find(pl => pl.id === id));
 			this.songServ.updateSong(this.song).subscribe();
 			this.dialogRef.close(this.song);
 		});

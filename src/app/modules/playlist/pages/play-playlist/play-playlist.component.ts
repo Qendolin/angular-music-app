@@ -35,12 +35,14 @@ export class PlayPlaylistComponent implements OnInit {
 
 	playPrevSong() {
 		this.currentSongIndex--;
-		if (this.currentSongIndex < 0) this.currentSongIndex = this.playlist.songs.length - 1;
+		if (this.currentSongIndex < 0) {
+			this.currentSongIndex = this.playlist.songs.length - 1;
+		}
 		this.resume();
 	}
 
 	onPlayerStateChanged(state: PlayerState) {
-		if (state == PlayerState.FINISHED) {
+		if (state === PlayerState.FINISHED) {
 			this.playNextSong();
 		}
 	}

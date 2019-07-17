@@ -18,7 +18,7 @@ export enum PlayerState {
 })
 export class SongPlayerComponent implements OnInit {
 	@Input() song: Song;
-	@Output('stateChanged') stateChangedEmitter: EventEmitter<PlayerState> = new EventEmitter();
+	@Output() stateChanged: EventEmitter<PlayerState> = new EventEmitter();
 
 	constructor(private dialog: MatDialog) {}
 
@@ -28,13 +28,15 @@ export class SongPlayerComponent implements OnInit {
 
 	emitStateChange(state: string) {
 		const newState = PlayerState[state];
-		this.stateChangedEmitter.emit(newState);
+		this.stateChanged.emit(newState);
 	}
 
 	showPlaylistDialog() {
 		const dialogRef = this.dialog.open(PlaylistSelectorDialog, { data: this.song });
 		dialogRef.afterClosed().subscribe(song => {
-			if (!song) return;
+			if (!song) {
+				return;
+			}
 			this.song = song;
 		});
 	}
