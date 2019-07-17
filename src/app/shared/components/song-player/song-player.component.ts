@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Song } from 'src/app/shared';
 import { MatDialog } from '@angular/material/dialog';
-import { PlaylistSelectorDialog } from '..';
+import { PlaylistSelectorDialogComponent } from '..';
 
 export enum PlayerState {
 	PAUSED,
@@ -32,7 +32,7 @@ export class SongPlayerComponent implements OnInit {
 	}
 
 	showPlaylistDialog() {
-		const dialogRef = this.dialog.open(PlaylistSelectorDialog, { data: this.song });
+		const dialogRef = this.dialog.open(PlaylistSelectorDialogComponent, { data: this.song });
 		dialogRef.afterClosed().subscribe(song => {
 			if (!song) {
 				return;
