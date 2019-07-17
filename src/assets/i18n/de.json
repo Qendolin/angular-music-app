@@ -13,6 +13,9 @@
 			"GENRES_PLACEHOLDER": "Genre auswählen",
 			"PUBLIC": "Öffentlich"
 		},
+		"LIST": {
+			"TITLE": "Lieder"
+		},
 		"MSGS": {
 			"SAVED": "Gespeichert"
 		}
@@ -22,6 +25,9 @@
 			"NAME": "Name",
 			"SUBMIT": "Genre Speichern",
 			"DELETE": "Löschen"
+		},
+		"LIST": {
+			"TITLE": "Genre"
 		},
 		"MSGS": {
 			"SAVED": "Gespeichert"
@@ -33,6 +39,9 @@
 			"SONGS": "Lieder",
 			"SUBMIT": "Playliste Speichern",
 			"PLAY": "Abspielen"
+		},
+		"LIST": {
+			"TITLE": "Playlisten"
 		},
 		"MSGS": {
 			"SAVED": "Gespeichert"
